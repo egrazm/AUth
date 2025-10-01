@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Passport Auth – Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <header class="container">
+    <h1>🛡️ Passport Auth – Demo</h1>
+    <p class="subtitle">Sesiones con CSRF + JWT • Arquitectura modular</p>
+  </header>
+
+  <main class="container grid">
+    <!-- Card: Sesión -->
+    <section class="card">
+      <div class="card-head">
+        <h2>Sesión (cookies + CSRF)</h2>
+        <div class="csrf">
+          <span>CSRF token:</span>
+          <code id="csrf" class="mono dim">(vacío)</code>
+          <button id="btn-csrf" class="btn ghost">Refrescar CSRF</button>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          <span>Email</span>
+          <input id="s-email" type="email" placeholder="user@example.com" autocomplete="username">
+        </label>
+
+        <label>
+          <span>Password</span>
+          <input id="s-pass" type="password" placeholder="**********" autocomplete="current-password">
+        </label>
+      </div>
+
+      <div class="btn-row">
+        <button id="btn-session-register-user" class="btn primary">Register USER</button>
+        <button id="btn-session-register-admin" class="btn warn">Register ADMIN</button>
+        <span class="spacer"></span>
+        <button id="btn-session-login" class="btn">Login (SESSION)</button>
+        <button id="btn-session-logout" class="btn ghost">Logout</button>
+      </div>
+
+      <div class="btn-row">
+        <button id="btn-session-me" class="btn soft">/session/me</button>
+        <button id="btn-session-admin" class="btn soft">/session/admin</button>
+        <button id="btn-session-logs" class="btn soft">/session/logs</button>
+      </div>
+    </section>
+
+    <!-- Card: JWT -->
+    <section class="card">
+      <div class="card-head">
+        <h2>JWT</h2>
+        <div class="csrf">
+          <span>JWT:</span>
+          <code id="jwt" class="mono dim">(vacío)</code>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          <span>Email</span>
+          <input id="j-email" type="email" placeholder="user@example.com" autocomplete="username">
+        </label>
+
+        <label>
+          <span>Password</span>
+          <input id="j-pass" type="password" placeholder="**********" autocomplete="current-password">
+        </label>
+      </div>
+
+      <div class="btn-row">
+        <button id="btn-jwt-login" class="btn primary">Login (JWT)</button>
+        <span class="spacer"></span>
+        <button id="btn-jwt-logout" class="btn ghost">Logout</button>
+      </div>
+
+      <div class="btn-row">
+        <button id="btn-jwt-me" class="btn soft">/me-jwt</button>
+        <button id="btn-jwt-admin" class="btn soft">/admin-jwt</button>
+        <button id="btn-jwt-logs" class="btn soft">/admin-logs-jwt</button>
+      </div>
+    </section>
+
+    <!-- Card: Logs -->
+    <section class="card">
+      <div class="card-head">
+        <h2>Logs</h2>
+      </div>
+      <pre id="out" class="log">Listo para probar…</pre>
+    </section>
+  </main>
+
+  <!-- JS externo para cumplir CSP: script-src 'self' -->
+  <script src="/app.js" defer></script>
+</body>
+</html>
