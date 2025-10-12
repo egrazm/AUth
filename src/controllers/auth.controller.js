@@ -135,7 +135,7 @@ export function meJwt(req, res){
     // 3) Return user info from token payload
     return res.json({ id: payload.sub, role: payload.role });
   } catch (e) {
-    return res.status(401).json({ error: "Token invalido" });
+    return res.status(401).json({ error: "iiToken invalido" });
   }
 }
 

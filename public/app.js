@@ -26,6 +26,20 @@
     }
   }
 
+  async function checkSession() {
+    const r = await get("/session/me");
+    const status = document.getElementById("session-status");
+    if (status){
+      if (r.ok) {
+        status.textContent = `Logueado: id=${r.data.id} · rol=${r.data.role}`;
+        status.dataset.logged = "1";
+      } else {
+        status.textContent = "No logueado";
+        status.dataset.logged = "0";
+      }
+    }
+  }
+
   async function rawPost(url, body = {}, extraHeaders = {}) {
     try {
       const r = await fetch(url, {
@@ -151,10 +165,11 @@
     document.addEventListener("DOMContentLoaded", async () => {
       bind();
       await getCsrf();
+      await checkSession();
       log("Listo. CSRF inicial cargado.");
     });
   } else {
     bind();
-    getCsrf().then(() => log("Listo. CSRF inicial cargado."));
+    getCsrf().then(() => checkSession().then(() => log("Listo. CSRF inicial cargado.")));
   }
 })();

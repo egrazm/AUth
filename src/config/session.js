@@ -1,10 +1,12 @@
 import session from "express-session";  //express-session manages user sessions in Express.js applications
 import connectSqlite3 from "connect-sqlite3";
+import fs from "fs";
 import { env } from "./env.js";
 
 // store session data in SQLite database
 const SQLiteStore = connectSqlite3(session);
 
++fs.mkdirSync("./data", { recursive: true });
 //middleware to handle user sessions
 export function sessionMiddleware(){
   return session({
@@ -18,6 +20,13 @@ export function sessionMiddleware(){
     resave: false,
     // don't create session until something stored (optimize storage)
     saveUninitialized: false,
+    
+    resave: false,
+
+    saveUninitialized: false,
+
+    rolling: true,
+
     // cookie settings
     cookie: {
       // make cookie accessible only by the web server

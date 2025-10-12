@@ -4,10 +4,10 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 
 import { env } from "./src/config/env.js";
-import { sessionMiddleware } from "./src/config/js";
+import { sessionMiddleware } from "./src/config/session.js";
 
 import { indexRouter } from "./src/routes/index.routes.js";
-import { sessionRouter } from "./src/routes/routes.js";
+import { sessionRouter } from "./src/routes/session.routes.js";
 import { authRouter } from "./src/routes/auth.routes.js";
 
 const app = express();
