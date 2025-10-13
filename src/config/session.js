@@ -21,9 +21,6 @@ export function sessionMiddleware(){
     // don't create session until something stored (optimize storage)
     saveUninitialized: false,
     
-    resave: false,
-
-    saveUninitialized: false,
 
     rolling: true,
 
